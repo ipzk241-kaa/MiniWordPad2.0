@@ -35,9 +35,9 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.checkBoxStrikeout = new System.Windows.Forms.CheckBox();
-            this.checkBoxTextBoxAlignRight = new System.Windows.Forms.CheckBox();
-            this.checkBoxTextBoxAlignCenter = new System.Windows.Forms.CheckBox();
-            this.checkBoxTextBoxAlignLeft = new System.Windows.Forms.CheckBox();
+            this.checkBoxTextBoxAlignRight = new System.Windows.Forms.RadioButton();
+            this.checkBoxTextBoxAlignCenter = new System.Windows.Forms.RadioButton();
+            this.checkBoxTextBoxAlignLeft = new System.Windows.Forms.RadioButton();
             this.FontBackColorPickerButton = new System.Windows.Forms.Button();
             this.FontColorPickerButton = new System.Windows.Forms.Button();
             this.checkBoxUnderline = new System.Windows.Forms.CheckBox();
@@ -220,6 +220,7 @@
             this.checkBoxTextBoxAlignRight.Text = ">";
             this.checkBoxTextBoxAlignRight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxTextBoxAlignRight.UseVisualStyleBackColor = false;
+            this.checkBoxTextBoxAlignRight.CheckedChanged += new System.EventHandler(this.checkBoxTextBoxAlignRight_CheckedChanged);
             // 
             // checkBoxTextBoxAlignCenter
             // 
@@ -240,6 +241,7 @@
             this.checkBoxTextBoxAlignCenter.Text = "=";
             this.checkBoxTextBoxAlignCenter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxTextBoxAlignCenter.UseVisualStyleBackColor = false;
+            this.checkBoxTextBoxAlignCenter.CheckedChanged += new System.EventHandler(this.checkBoxTextBoxAlignCenter_CheckedChanged);
             // 
             // checkBoxTextBoxAlignLeft
             // 
@@ -248,7 +250,6 @@
             this.checkBoxTextBoxAlignLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.checkBoxTextBoxAlignLeft.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxTextBoxAlignLeft.Checked = true;
-            this.checkBoxTextBoxAlignLeft.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxTextBoxAlignLeft.FlatAppearance.BorderSize = 0;
             this.checkBoxTextBoxAlignLeft.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
             this.checkBoxTextBoxAlignLeft.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
@@ -262,6 +263,7 @@
             this.checkBoxTextBoxAlignLeft.Text = "<";
             this.checkBoxTextBoxAlignLeft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxTextBoxAlignLeft.UseVisualStyleBackColor = false;
+            this.checkBoxTextBoxAlignLeft.CheckedChanged += new System.EventHandler(this.checkBoxTextBoxAlignLeft_CheckedChanged);
             // 
             // FontBackColorPickerButton
             // 
@@ -288,6 +290,7 @@
             this.FontColorPickerButton.TabIndex = 9;
             this.FontColorPickerButton.Text = "A";
             this.FontColorPickerButton.UseVisualStyleBackColor = true;
+            this.FontColorPickerButton.Click += new System.EventHandler(this.FontColorPickerButton_Click);
             // 
             // checkBoxUnderline
             // 
@@ -779,9 +782,9 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.CheckBox checkBoxStrikeout;
-        private System.Windows.Forms.CheckBox checkBoxTextBoxAlignRight;
-        private System.Windows.Forms.CheckBox checkBoxTextBoxAlignCenter;
-        private System.Windows.Forms.CheckBox checkBoxTextBoxAlignLeft;
+        private System.Windows.Forms.RadioButton checkBoxTextBoxAlignRight;
+        private System.Windows.Forms.RadioButton checkBoxTextBoxAlignCenter;
+        private System.Windows.Forms.RadioButton checkBoxTextBoxAlignLeft;
         private System.Windows.Forms.Button FontBackColorPickerButton;
         private System.Windows.Forms.Button FontColorPickerButton;
         private System.Windows.Forms.CheckBox checkBoxUnderline;

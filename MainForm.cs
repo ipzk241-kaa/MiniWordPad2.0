@@ -16,12 +16,17 @@ namespace Lab_6
         private FontManager fontManager;
         List<string> _FontsName = new List<string>();
         List<float> _FontSize = new List<float>();
+        private TextColorManager textColorManager;
+        private TextAlignmentManager textAlignmentManager;
+
         public MainForm()
         {
             InitializeComponent();
+            InitializeFonts();
             documentManager = new DocumentManager(RichTextBoxEditor);
             fontManager = new FontManager(RichTextBoxEditor);
-            InitializeFonts();
+            textColorManager = new TextColorManager(RichTextBoxEditor);
+            textAlignmentManager = new TextAlignmentManager(RichTextBoxEditor);
         }
         private void CreateFileMenuButton_Click(object sender, EventArgs e)
         {
@@ -114,6 +119,26 @@ namespace Lab_6
 
                 FontSelectorComboBox.SelectedIndex = GetFontIndex(RichTextBoxEditor.SelectionFont.FontFamily.Name);
                 FontSizeComboBox.SelectedItem = RichTextBoxEditor.SelectionFont.Size;
+
+                FontColorPickerButton.FlatAppearance.BorderColor = RichTextBoxEditor.SelectionColor;
+                FontBackColorPickerButton.FlatAppearance.BorderColor = RichTextBoxEditor.SelectionBackColor;
+
+                checkBoxTextBoxAlignLeft.Checked = false;
+                checkBoxTextBoxAlignCenter.Checked = false;
+                checkBoxTextBoxAlignRight.Checked = false;
+
+                switch (RichTextBoxEditor.SelectionAlignment)
+                {
+                    case HorizontalAlignment.Left:
+                        checkBoxTextBoxAlignLeft.Checked = true;
+                        break;
+                    case HorizontalAlignment.Center:
+                        checkBoxTextBoxAlignCenter.Checked = true;
+                        break;
+                    case HorizontalAlignment.Right:
+                        checkBoxTextBoxAlignRight.Checked = true;
+                        break;
+                }
             }
         }
 
@@ -137,5 +162,30 @@ namespace Lab_6
             fontManager.ToggleStrikeout();
         }
 
+        private void FontColorPickerButton_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    textColorManager.SetTextColor(colorDialog.Color);
+                }
+            }
+        }
+
+        private void checkBoxTextBoxAlignLeft_CheckedChanged(object sender, EventArgs e)
+        {
+            textAlignmentManager.SetAlignment(HorizontalAlignment.Left);
+        }
+
+        private void checkBoxTextBoxAlignCenter_CheckedChanged(object sender, EventArgs e)
+        {
+            textAlignmentManager.SetAlignment(HorizontalAlignment.Center);
+        }
+
+        private void checkBoxTextBoxAlignRight_CheckedChanged(object sender, EventArgs e)
+        {
+            textAlignmentManager.SetAlignment(HorizontalAlignment.Right);
+        }
     }
 }
