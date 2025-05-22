@@ -18,6 +18,7 @@ namespace Lab_6
         List<float> _FontSize = new List<float>();
         private TextColorManager textColorManager;
         private TextAlignmentManager textAlignmentManager;
+        private WindowResizeHandler resizeHandler;
 
         public MainForm()
         {
@@ -27,6 +28,7 @@ namespace Lab_6
             fontManager = new FontManager(RichTextBoxEditor);
             textColorManager = new TextColorManager(RichTextBoxEditor);
             textAlignmentManager = new TextAlignmentManager(RichTextBoxEditor);
+            resizeHandler = new WindowResizeHandler(this);
         }
         private void CreateFileMenuButton_Click(object sender, EventArgs e)
         {
@@ -186,6 +188,30 @@ namespace Lab_6
         private void checkBoxTextBoxAlignRight_CheckedChanged(object sender, EventArgs e)
         {
             textAlignmentManager.SetAlignment(HorizontalAlignment.Right);
+        }
+        protected override void WndProc(ref Message m)
+        {
+            if (resizeHandler != null && resizeHandler.HandleWndProc(ref m))
+            {
+                return;
+            }
+
+            base.WndProc(ref m);
+        }
+        // Все що нижче потрібне для того щоб перетягувати вікно так як я повністю забрав края
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }
