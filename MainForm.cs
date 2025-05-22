@@ -31,6 +31,7 @@ namespace Lab_6
             textAlignmentManager = new TextAlignmentManager(RichTextBoxEditor);
             resizeHandler = new WindowResizeHandler(this);
             themeManager = new ThemeManager(this, RichTextBoxEditor);
+            RichTextBoxEditor.ContextMenuStrip = CreateContextMenu();
         }
         private void CreateFileMenuButton_Click(object sender, EventArgs e)
         {
@@ -246,6 +247,86 @@ namespace Lab_6
                     themeManager.SetForegroundColor(colorDialog.Color);
                 }
             }
+        }
+        private ContextMenuStrip CreateContextMenu()
+        {
+            ContextMenuStrip contextMenu = new ContextMenuStrip();
+
+            ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Копіювати");
+            ToolStripMenuItem cutMenuItem = new ToolStripMenuItem("Вирізати");
+            ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("Вставити");
+            ToolStripMenuItem fontMenuItem = new ToolStripMenuItem("Шрифт");
+
+            copyMenuItem.Click += CopyMenuItem_Click;
+            cutMenuItem.Click += CutMenuItem_Click;
+            pasteMenuItem.Click += PasteMenuItem_Click;
+            fontMenuItem.Click += FontMenuItem_Click;
+
+            contextMenu.Items.Add(copyMenuItem);
+            contextMenu.Items.Add(cutMenuItem);
+            contextMenu.Items.Add(pasteMenuItem);
+            contextMenu.Items.Add(fontMenuItem);
+
+            return contextMenu;
+        }
+        private void CopyMenuItem_Click(object sender, EventArgs e)
+        {
+            RichTextBoxEditor.Copy();
+        }
+
+        private void CutMenuItem_Click(object sender, EventArgs e)
+        {
+            RichTextBoxEditor.Cut();
+        }
+
+        private void PasteMenuItem_Click(object sender, EventArgs e)
+        {
+            RichTextBoxEditor.Paste();
+        }
+        private void FontMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FontDialog fontDialog = new FontDialog())
+            {
+                if (fontDialog.ShowDialog() == DialogResult.OK)
+                {
+                    RichTextBoxEditor.SelectionFont = fontDialog.Font;
+                }
+            }
+        }
+
+        private void PastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.GetDataObject().GetDataPresent(DataFormats.Text))
+                RichTextBoxEditor.Paste();
+        }
+
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (RichTextBoxEditor.SelectionLength > 0)
+                RichTextBoxEditor.Copy();
+        }
+
+        private void CutoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (RichTextBoxEditor.SelectionLength > 0)
+                RichTextBoxEditor.Cut();
+        }
+
+        private void CancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RichTextBoxEditor.Undo();
+        }
+
+        private void RepitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (RichTextBoxEditor.CanRedo == true)
+                if (RichTextBoxEditor.RedoActionName != "Delete")
+                    RichTextBoxEditor.Redo();
+        }
+
+        private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RichTextBoxEditor.SelectAll();
         }
     }
 }

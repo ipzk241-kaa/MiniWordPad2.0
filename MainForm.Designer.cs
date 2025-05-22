@@ -252,6 +252,7 @@
             this.CancelToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.CancelToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.CancelToolStripMenuItem.Text = "Відміна дій";
+            this.CancelToolStripMenuItem.Click += new System.EventHandler(this.CancelToolStripMenuItem_Click);
             // 
             // RepitToolStripMenuItem1
             // 
@@ -259,6 +260,7 @@
             this.RepitToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.RepitToolStripMenuItem1.Size = new System.Drawing.Size(240, 26);
             this.RepitToolStripMenuItem1.Text = "&Повтор дії";
+            this.RepitToolStripMenuItem1.Click += new System.EventHandler(this.RepitToolStripMenuItem1_Click);
             // 
             // toolStripSeparator3
             // 
@@ -273,6 +275,7 @@
             this.CutoolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.CutoolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.CutoolStripMenuItem.Text = "Вирізати";
+            this.CutoolStripMenuItem.Click += new System.EventHandler(this.CutoolStripMenuItem_Click);
             // 
             // CopyToolStripMenuItem
             // 
@@ -282,6 +285,7 @@
             this.CopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.CopyToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.CopyToolStripMenuItem.Text = "Копіювати";
+            this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
             // PastToolStripMenuItem
             // 
@@ -291,6 +295,7 @@
             this.PastToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.PastToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.PastToolStripMenuItem.Text = "Вставка";
+            this.PastToolStripMenuItem.Click += new System.EventHandler(this.PastToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -302,6 +307,7 @@
             this.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem";
             this.SelectAllToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.SelectAllToolStripMenuItem.Text = "Виділити все";
+            this.SelectAllToolStripMenuItem.Click += new System.EventHandler(this.SelectAllToolStripMenuItem_Click);
             // 
             // ServiceToolStripMenuItem
             // 
@@ -316,7 +322,7 @@
             // SettingsToolStripMenuItem
             // 
             this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
-            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.SettingsToolStripMenuItem.Text = "&Налаштування";
             // 
             // ParametersToolStripMenuItem
@@ -324,7 +330,7 @@
             this.ParametersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ColorToolStripMenuItem});
             this.ParametersToolStripMenuItem.Name = "ParametersToolStripMenuItem";
-            this.ParametersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ParametersToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.ParametersToolStripMenuItem.Text = "&Параметри";
             // 
             // ColorToolStripMenuItem
@@ -335,7 +341,7 @@
             this.BackColorSelector,
             this.BackColorPickerMenuItem});
             this.ColorToolStripMenuItem.Name = "ColorToolStripMenuItem";
-            this.ColorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ColorToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
             this.ColorToolStripMenuItem.Text = "Колір";
             // 
             // whiteColorMenuItem
@@ -388,6 +394,7 @@
             this.PasteButton.Text = "Вставити";
             this.PasteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.PasteButton.UseVisualStyleBackColor = true;
+            this.PasteButton.Click += new System.EventHandler(this.PastToolStripMenuItem_Click);
             // 
             // FontSelectorComboBox
             // 
@@ -416,6 +423,7 @@
             this.CutButton.Text = "✂️ Вирізати";
             this.CutButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CutButton.UseVisualStyleBackColor = true;
+            this.CutButton.Click += new System.EventHandler(this.CutoolStripMenuItem_Click);
             // 
             // CopyButton
             // 
@@ -431,6 +439,7 @@
             this.CopyButton.Text = "⎘ Копіювати";
             this.CopyButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CopyButton.UseVisualStyleBackColor = true;
+            this.CopyButton.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
             // checkBoxBold
             // 
@@ -721,6 +730,7 @@
             this.RedoButton.TabIndex = 5;
             this.RedoButton.Text = "↪";
             this.RedoButton.UseVisualStyleBackColor = false;
+            this.RedoButton.Click += new System.EventHandler(this.RepitToolStripMenuItem1_Click);
             // 
             // UndoButton
             // 
@@ -739,6 +749,7 @@
             this.UndoButton.TabIndex = 6;
             this.UndoButton.Text = "↩";
             this.UndoButton.UseVisualStyleBackColor = false;
+            this.UndoButton.Click += new System.EventHandler(this.CancelToolStripMenuItem_Click);
             // 
             // SaveButton
             // 
@@ -757,6 +768,7 @@
             this.SaveButton.TabIndex = 4;
             this.SaveButton.Text = "💾";
             this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveMenuButton_Click);
             // 
             // MinimizeWindowButton
             // 
