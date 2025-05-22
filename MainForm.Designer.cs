@@ -471,6 +471,7 @@
             this.CreateFileMenuButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.CreateFileMenuButton.Size = new System.Drawing.Size(229, 26);
             this.CreateFileMenuButton.Text = "Створити";
+            this.CreateFileMenuButton.Click += new System.EventHandler(this.CreateFileMenuButton_Click);
             // 
             // OpenFileMenuButton
             // 
@@ -480,6 +481,7 @@
             this.OpenFileMenuButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.OpenFileMenuButton.Size = new System.Drawing.Size(229, 26);
             this.OpenFileMenuButton.Text = "Відкрити";
+            this.OpenFileMenuButton.Click += new System.EventHandler(this.OpenFileMenuButton_Click);
             // 
             // toolStripSeparator
             // 
@@ -494,12 +496,14 @@
             this.SaveMenuButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.SaveMenuButton.Size = new System.Drawing.Size(229, 26);
             this.SaveMenuButton.Text = "Зберегти";
+            this.SaveMenuButton.Click += new System.EventHandler(this.SaveMenuButton_Click);
             // 
             // SaveAsMenuButton
             // 
             this.SaveAsMenuButton.Name = "SaveAsMenuButton";
             this.SaveAsMenuButton.Size = new System.Drawing.Size(229, 26);
             this.SaveAsMenuButton.Text = "Зберегти як";
+            this.SaveAsMenuButton.Click += new System.EventHandler(this.SaveAsMenuButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -603,7 +607,7 @@
             // SettingsToolStripMenuItem
             // 
             this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
-            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.SettingsToolStripMenuItem.Text = "&Налаштування";
             // 
             // ParametersToolStripMenuItem
@@ -611,7 +615,7 @@
             this.ParametersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ColorToolStripMenuItem});
             this.ParametersToolStripMenuItem.Name = "ParametersToolStripMenuItem";
-            this.ParametersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ParametersToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.ParametersToolStripMenuItem.Text = "&Параметри";
             // 
             // ColorToolStripMenuItem
@@ -622,7 +626,7 @@
             this.BackColorSelector,
             this.BackColorPickerMenuItem});
             this.ColorToolStripMenuItem.Name = "ColorToolStripMenuItem";
-            this.ColorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ColorToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
             this.ColorToolStripMenuItem.Text = "Колір";
             // 
             // whiteColorMenuItem
@@ -728,6 +732,7 @@
             this.RichTextBoxEditor.Size = new System.Drawing.Size(763, 365);
             this.RichTextBoxEditor.TabIndex = 0;
             this.RichTextBoxEditor.Text = "";
+            this.RichTextBoxEditor.TextChanged += new System.EventHandler(this.RichTextBoxEditor_TextChanged);
             // 
             // MainForm
             // 
