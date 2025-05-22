@@ -349,7 +349,7 @@
             this.FontSizeComboBox.Name = "FontSizeComboBox";
             this.FontSizeComboBox.Size = new System.Drawing.Size(52, 27);
             this.FontSizeComboBox.TabIndex = 5;
-            this.FontSizeComboBox.SelectionChangeCommitted += new System.EventHandler(this.FontSelectorComboBox_SelectedIndexChanged);
+            this.FontSizeComboBox.SelectionChangeCommitted += new System.EventHandler(this.FontSizeComboBox_SelectedIndexChanged);
             // 
             // checkBoxBold
             // 
@@ -739,6 +739,7 @@
             this.RichTextBoxEditor.Size = new System.Drawing.Size(763, 365);
             this.RichTextBoxEditor.TabIndex = 0;
             this.RichTextBoxEditor.Text = "";
+            this.RichTextBoxEditor.SelectionChanged += new System.EventHandler(this.RichTextBoxEditor_SelectionChanged);
             this.RichTextBoxEditor.TextChanged += new System.EventHandler(this.RichTextBoxEditor_TextChanged);
             // 
             // MainForm

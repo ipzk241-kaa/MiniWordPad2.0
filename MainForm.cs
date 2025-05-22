@@ -99,7 +99,24 @@ namespace Lab_6
                 fontManager.SetFontSize(size);
             }
         }
-        
+        private int GetFontIndex(string name)
+        {
+            return _FontsName.IndexOf(name);
+        }
+        private void RichTextBoxEditor_SelectionChanged(object sender, EventArgs e)
+        {
+            if (RichTextBoxEditor.SelectionFont != null)
+            {
+                checkBoxBold.Checked = RichTextBoxEditor.SelectionFont.Bold;
+                checkBoxItalic.Checked = RichTextBoxEditor.SelectionFont.Italic;
+                checkBoxUnderline.Checked = RichTextBoxEditor.SelectionFont.Underline;
+                checkBoxStrikeout.Checked = RichTextBoxEditor.SelectionFont.Strikeout;
+
+                FontSelectorComboBox.SelectedIndex = GetFontIndex(RichTextBoxEditor.SelectionFont.FontFamily.Name);
+                FontSizeComboBox.SelectedItem = RichTextBoxEditor.SelectionFont.Size;
+            }
+        }
+
         private void checkBoxBold_CheckedChanged(object sender, EventArgs e)
         {
             fontManager.ToggleBold();
