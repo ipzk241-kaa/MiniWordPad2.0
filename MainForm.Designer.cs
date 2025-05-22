@@ -316,7 +316,7 @@
             // SettingsToolStripMenuItem
             // 
             this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
-            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
+            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.SettingsToolStripMenuItem.Text = "&Налаштування";
             // 
             // ParametersToolStripMenuItem
@@ -324,7 +324,7 @@
             this.ParametersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ColorToolStripMenuItem});
             this.ParametersToolStripMenuItem.Name = "ParametersToolStripMenuItem";
-            this.ParametersToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
+            this.ParametersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ParametersToolStripMenuItem.Text = "&Параметри";
             // 
             // ColorToolStripMenuItem
@@ -335,32 +335,36 @@
             this.BackColorSelector,
             this.BackColorPickerMenuItem});
             this.ColorToolStripMenuItem.Name = "ColorToolStripMenuItem";
-            this.ColorToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
+            this.ColorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ColorToolStripMenuItem.Text = "Колір";
             // 
             // whiteColorMenuItem
             // 
             this.whiteColorMenuItem.Name = "whiteColorMenuItem";
             this.whiteColorMenuItem.Size = new System.Drawing.Size(258, 26);
-            this.whiteColorMenuItem.Text = "Білий";
+            this.whiteColorMenuItem.Text = "Світла тема";
+            this.whiteColorMenuItem.Click += new System.EventHandler(this.whiteColorMenuItem_Click);
             // 
             // blackThemeMenuItem
             // 
             this.blackThemeMenuItem.Name = "blackThemeMenuItem";
             this.blackThemeMenuItem.Size = new System.Drawing.Size(258, 26);
-            this.blackThemeMenuItem.Text = "Чорний";
+            this.blackThemeMenuItem.Text = "Темна тема";
+            this.blackThemeMenuItem.Click += new System.EventHandler(this.blackThemeMenuItem_Click);
             // 
             // BackColorSelector
             // 
             this.BackColorSelector.Name = "BackColorSelector";
             this.BackColorSelector.Size = new System.Drawing.Size(258, 26);
             this.BackColorSelector.Text = "Вибрати колір вікна";
+            this.BackColorSelector.Click += new System.EventHandler(this.BackColorSelector_Click);
             // 
             // BackColorPickerMenuItem
             // 
             this.BackColorPickerMenuItem.Name = "BackColorPickerMenuItem";
             this.BackColorPickerMenuItem.Size = new System.Drawing.Size(258, 26);
             this.BackColorPickerMenuItem.Text = "Вибрати колір тексту";
+            this.BackColorPickerMenuItem.Click += new System.EventHandler(this.BackColorPickerMenuItem_Click);
             // 
             // InfoToolStripMenuItem
             // 

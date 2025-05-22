@@ -19,6 +19,7 @@ namespace Lab_6
         private TextColorManager textColorManager;
         private TextAlignmentManager textAlignmentManager;
         private WindowResizeHandler resizeHandler;
+        private ThemeManager themeManager;
 
         public MainForm()
         {
@@ -29,6 +30,7 @@ namespace Lab_6
             textColorManager = new TextColorManager(RichTextBoxEditor);
             textAlignmentManager = new TextAlignmentManager(RichTextBoxEditor);
             resizeHandler = new WindowResizeHandler(this);
+            themeManager = new ThemeManager(this, RichTextBoxEditor);
         }
         private void CreateFileMenuButton_Click(object sender, EventArgs e)
         {
@@ -211,6 +213,38 @@ namespace Lab_6
             {
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void whiteColorMenuItem_Click(object sender, EventArgs e)
+        {
+            themeManager.ApplyLightTheme();
+        }
+
+        private void blackThemeMenuItem_Click(object sender, EventArgs e)
+        {
+            themeManager.ApplyDarkTheme();
+        }
+
+        private void BackColorSelector_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    themeManager.SetBackgroundColor(colorDialog.Color);
+                }
+            }
+        }
+
+        private void BackColorPickerMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    themeManager.SetForegroundColor(colorDialog.Color);
+                }
             }
         }
     }
