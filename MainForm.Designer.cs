@@ -199,6 +199,7 @@
             this.checkBoxStrikeout.Text = "З";
             this.checkBoxStrikeout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxStrikeout.UseVisualStyleBackColor = false;
+            this.checkBoxStrikeout.CheckedChanged += new System.EventHandler(this.checkBoxStrikeout_CheckedChanged);
             // 
             // checkBoxTextBoxAlignRight
             // 
@@ -307,6 +308,7 @@
             this.checkBoxUnderline.Text = "Ч";
             this.checkBoxUnderline.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxUnderline.UseVisualStyleBackColor = false;
+            this.checkBoxUnderline.CheckedChanged += new System.EventHandler(this.checkBoxUnderline_CheckedChanged);
             // 
             // panel6
             // 
@@ -335,6 +337,7 @@
             this.checkBoxItalic.Text = "К";
             this.checkBoxItalic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxItalic.UseVisualStyleBackColor = false;
+            this.checkBoxItalic.CheckedChanged += new System.EventHandler(this.checkBoxItalic_CheckedChanged);
             // 
             // FontSizeComboBox
             // 
@@ -346,6 +349,7 @@
             this.FontSizeComboBox.Name = "FontSizeComboBox";
             this.FontSizeComboBox.Size = new System.Drawing.Size(52, 27);
             this.FontSizeComboBox.TabIndex = 5;
+            this.FontSizeComboBox.SelectionChangeCommitted += new System.EventHandler(this.FontSelectorComboBox_SelectedIndexChanged);
             // 
             // checkBoxBold
             // 
@@ -365,6 +369,7 @@
             this.checkBoxBold.Text = "Ж";
             this.checkBoxBold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxBold.UseVisualStyleBackColor = false;
+            this.checkBoxBold.CheckedChanged += new System.EventHandler(this.checkBoxBold_CheckedChanged);
             // 
             // CopyButton
             // 
@@ -407,6 +412,7 @@
             this.FontSelectorComboBox.Name = "FontSelectorComboBox";
             this.FontSelectorComboBox.Size = new System.Drawing.Size(124, 27);
             this.FontSelectorComboBox.TabIndex = 2;
+            this.FontSelectorComboBox.SelectionChangeCommitted += new System.EventHandler(this.FontSelectorComboBox_SelectedIndexChanged);
             // 
             // PasteButton
             // 
@@ -683,6 +689,7 @@
             this.CloseWindowButton.TabIndex = 4;
             this.CloseWindowButton.Text = "X";
             this.CloseWindowButton.UseVisualStyleBackColor = false;
+            this.CloseWindowButton.Click += new System.EventHandler(this.CloseWindowButton_Click);
             // 
             // FileNameLabel
             // 
