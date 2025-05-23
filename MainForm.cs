@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Markdig.Parsers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,6 @@ namespace Lab_6
         private TextAlignmentManager textAlignmentManager;
         private WindowResizeHandler resizeHandler;
         private ThemeManager themeManager;
-
         public MainForm()
         {
             InitializeComponent();
@@ -127,23 +127,6 @@ namespace Lab_6
 
                 FontColorPickerButton.FlatAppearance.BorderColor = RichTextBoxEditor.SelectionColor;
                 FontBackColorPickerButton.FlatAppearance.BorderColor = RichTextBoxEditor.SelectionBackColor;
-
-                checkBoxTextBoxAlignLeft.Checked = false;
-                checkBoxTextBoxAlignCenter.Checked = false;
-                checkBoxTextBoxAlignRight.Checked = false;
-
-                switch (RichTextBoxEditor.SelectionAlignment)
-                {
-                    case HorizontalAlignment.Left:
-                        checkBoxTextBoxAlignLeft.Checked = true;
-                        break;
-                    case HorizontalAlignment.Center:
-                        checkBoxTextBoxAlignCenter.Checked = true;
-                        break;
-                    case HorizontalAlignment.Right:
-                        checkBoxTextBoxAlignRight.Checked = true;
-                        break;
-                }
             }
         }
 
@@ -177,7 +160,16 @@ namespace Lab_6
                 }
             }
         }
-
+        private void FontBackColorPickerButton_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    textColorManager.SetTextColorBack(colorDialog.Color);
+                }
+            }
+        }
         private void checkBoxTextBoxAlignLeft_CheckedChanged(object sender, EventArgs e)
         {
             textAlignmentManager.SetAlignment(HorizontalAlignment.Left);
@@ -327,6 +319,13 @@ namespace Lab_6
         private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RichTextBoxEditor.SelectAll();
+        }
+
+        private void MarkdownPreviewButton_Click(object sender, EventArgs e)
+        {
+            string markdownText = RichTextBoxEditor.Text;
+            var previewForm = new MarkdownPreviewForm(markdownText);
+            previewForm.Show();
         }
     }
 }

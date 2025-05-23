@@ -76,6 +76,7 @@
             this.checkBoxTextBoxAlignRight = new System.Windows.Forms.RadioButton();
             this.checkBoxStrikeout = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.MarkdownPreviewButton = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.FileNameLabel = new System.Windows.Forms.Label();
@@ -83,8 +84,6 @@
             this.RedoButton = new System.Windows.Forms.Button();
             this.UndoButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.MinimizeWindowButton = new System.Windows.Forms.Button();
-            this.MaximizeWindowButton = new System.Windows.Forms.Button();
             this.CloseWindowButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -549,6 +548,7 @@
             this.FontBackColorPickerButton.TabIndex = 10;
             this.FontBackColorPickerButton.Text = "🖌";
             this.FontBackColorPickerButton.UseVisualStyleBackColor = true;
+            this.FontBackColorPickerButton.Click += new System.EventHandler(this.FontBackColorPickerButton_Click);
             // 
             // checkBoxTextBoxAlignLeft
             // 
@@ -639,6 +639,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.panel3.Controls.Add(this.MarkdownPreviewButton);
             this.panel3.Controls.Add(this.checkBoxStrikeout);
             this.panel3.Controls.Add(this.checkBoxTextBoxAlignRight);
             this.panel3.Controls.Add(this.checkBoxTextBoxAlignCenter);
@@ -663,12 +664,27 @@
             this.panel3.Size = new System.Drawing.Size(883, 105);
             this.panel3.TabIndex = 1;
             // 
+            // MarkdownPreviewButton
+            // 
+            this.MarkdownPreviewButton.FlatAppearance.BorderSize = 0;
+            this.MarkdownPreviewButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.MarkdownPreviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MarkdownPreviewButton.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 9F);
+            this.MarkdownPreviewButton.ForeColor = System.Drawing.Color.Black;
+            this.MarkdownPreviewButton.Location = new System.Drawing.Point(380, 32);
+            this.MarkdownPreviewButton.Margin = new System.Windows.Forms.Padding(0);
+            this.MarkdownPreviewButton.Name = "MarkdownPreviewButton";
+            this.MarkdownPreviewButton.Size = new System.Drawing.Size(100, 23);
+            this.MarkdownPreviewButton.TabIndex = 15;
+            this.MarkdownPreviewButton.Text = "Markdown";
+            this.MarkdownPreviewButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MarkdownPreviewButton.UseVisualStyleBackColor = true;
+            this.MarkdownPreviewButton.Click += new System.EventHandler(this.MarkdownPreviewButton_Click);
+            // 
             // HeaderPanel
             // 
             this.HeaderPanel.Controls.Add(this.panel4);
             this.HeaderPanel.Controls.Add(this.panel2);
-            this.HeaderPanel.Controls.Add(this.MinimizeWindowButton);
-            this.HeaderPanel.Controls.Add(this.MaximizeWindowButton);
             this.HeaderPanel.Controls.Add(this.CloseWindowButton);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(4, 0);
@@ -769,20 +785,6 @@
             this.SaveButton.Text = "💾";
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveMenuButton_Click);
-            // 
-            // MinimizeWindowButton
-            // 
-            this.MinimizeWindowButton.Location = new System.Drawing.Point(0, 0);
-            this.MinimizeWindowButton.Name = "MinimizeWindowButton";
-            this.MinimizeWindowButton.Size = new System.Drawing.Size(75, 23);
-            this.MinimizeWindowButton.TabIndex = 8;
-            // 
-            // MaximizeWindowButton
-            // 
-            this.MaximizeWindowButton.Location = new System.Drawing.Point(0, 0);
-            this.MaximizeWindowButton.Name = "MaximizeWindowButton";
-            this.MaximizeWindowButton.Size = new System.Drawing.Size(75, 23);
-            this.MaximizeWindowButton.TabIndex = 9;
             // 
             // CloseWindowButton
             // 
@@ -888,10 +890,9 @@
         private System.Windows.Forms.Button RedoButton;
         private System.Windows.Forms.Button UndoButton;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button MinimizeWindowButton;
-        private System.Windows.Forms.Button MaximizeWindowButton;
         private System.Windows.Forms.Button CloseWindowButton;
         private System.Windows.Forms.Label FileNameLabel;
+        private System.Windows.Forms.Button MarkdownPreviewButton;
     }
 }
 

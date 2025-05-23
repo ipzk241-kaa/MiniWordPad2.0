@@ -16,6 +16,10 @@ namespace Lab_6
         {
             _editor.SelectionColor = color;
         }
+        public void SetTextColorBack(Color color)
+        {
+            _editor.SelectionBackColor = color;
+        }
 
         public Color GetCurrentTextColor()
         {
