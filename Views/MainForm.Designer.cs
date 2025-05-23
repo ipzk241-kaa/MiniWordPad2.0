@@ -96,6 +96,7 @@
             // 
             // panel1
             // 
+            this.panel1.Tag = "NOCHANGE";
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.RichTextBoxEditor);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -107,6 +108,7 @@
             // 
             // RichTextBoxEditor
             // 
+            this.RichTextBoxEditor.Tag = "NOCHANGE";
             this.RichTextBoxEditor.AcceptsTab = true;
             this.RichTextBoxEditor.BackColor = System.Drawing.Color.White;
             this.RichTextBoxEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -124,7 +126,8 @@
             this.RichTextBoxEditor.TextChanged += new System.EventHandler(this.RichTextBoxEditor_TextChanged);
             // 
             // panel5
-            // 
+            //
+            this.panel5.Tag = "NOCHANGE";
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.panel5.Controls.Add(this.panel1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -362,14 +365,14 @@
             this.BackColorSelector.Name = "BackColorSelector";
             this.BackColorSelector.Size = new System.Drawing.Size(258, 26);
             this.BackColorSelector.Text = "Вибрати колір вікна";
-            this.BackColorSelector.Click += new System.EventHandler(this.BackColorSelector_Click);
+            this.BackColorSelector.Click += new System.EventHandler(this.CustomThemeMenuItem_Click);
             // 
             // BackColorPickerMenuItem
             // 
             this.BackColorPickerMenuItem.Name = "BackColorPickerMenuItem";
             this.BackColorPickerMenuItem.Size = new System.Drawing.Size(258, 26);
             this.BackColorPickerMenuItem.Text = "Вибрати колір тексту";
-            this.BackColorPickerMenuItem.Click += new System.EventHandler(this.BackColorPickerMenuItem_Click);
+            this.BackColorPickerMenuItem.Click += new System.EventHandler(this.CustomThemeMenuItem_Click);
             // 
             // InfoToolStripMenuItem
             // 
@@ -683,6 +686,7 @@
             // 
             // HeaderPanel
             // 
+            this.HeaderPanel.Tag = "Theme:font";
             this.HeaderPanel.Controls.Add(this.panel4);
             this.HeaderPanel.Controls.Add(this.panel2);
             this.HeaderPanel.Controls.Add(this.CloseWindowButton);
@@ -695,6 +699,7 @@
             // 
             // panel4
             // 
+            this.panel4.Tag = "Theme:font";
             this.panel4.Controls.Add(this.FileNameLabel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(90, 0);
@@ -704,6 +709,7 @@
             // 
             // FileNameLabel
             // 
+            this.FileNameLabel.Tag = "Theme:font";
             this.FileNameLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.FileNameLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 10F);
             this.FileNameLabel.Location = new System.Drawing.Point(0, 0);
@@ -717,6 +723,7 @@
             // 
             // panel2
             // 
+            this.panel2.Tag = "Theme:font";
             this.panel2.AutoSize = true;
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.Controls.Add(this.RedoButton);
@@ -731,6 +738,7 @@
             // 
             // RedoButton
             // 
+            this.RedoButton.Tag = "Theme:font";
             this.RedoButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.RedoButton.BackColor = System.Drawing.Color.Transparent;
             this.RedoButton.Dock = System.Windows.Forms.DockStyle.Left;
@@ -750,6 +758,7 @@
             // 
             // UndoButton
             // 
+            this.UndoButton.Tag = "Theme:font";
             this.UndoButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.UndoButton.BackColor = System.Drawing.Color.Transparent;
             this.UndoButton.Dock = System.Windows.Forms.DockStyle.Left;
@@ -769,6 +778,7 @@
             // 
             // SaveButton
             // 
+            this.SaveButton.Tag = "Theme:font";
             this.SaveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SaveButton.BackColor = System.Drawing.Color.Transparent;
             this.SaveButton.Dock = System.Windows.Forms.DockStyle.Left;
@@ -788,6 +798,7 @@
             // 
             // CloseWindowButton
             // 
+            this.CloseWindowButton.Tag = "Theme:font";
             this.CloseWindowButton.BackColor = System.Drawing.Color.Transparent;
             this.CloseWindowButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.CloseWindowButton.FlatAppearance.BorderSize = 0;
@@ -806,6 +817,7 @@
             // 
             // MainForm
             // 
+            this.Tag = "Theme:font";
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(891, 509);

@@ -20,7 +20,7 @@ namespace Lab_6
         private TextColorManager textColorManager;
         private TextAlignmentManager textAlignmentManager;
         private WindowResizeHandler resizeHandler;
-        private ThemeManager themeManager;
+        private ThemeManager themeManager = new ThemeManager();
         public MainForm()
         {
             InitializeComponent();
@@ -30,7 +30,6 @@ namespace Lab_6
             textColorManager = new TextColorManager(RichTextBoxEditor);
             textAlignmentManager = new TextAlignmentManager(RichTextBoxEditor);
             resizeHandler = new WindowResizeHandler(this);
-            themeManager = new ThemeManager(this, RichTextBoxEditor);
             RichTextBoxEditor.ContextMenuStrip = CreateContextMenu();
         }
         private void CreateFileMenuButton_Click(object sender, EventArgs e)
@@ -211,33 +210,25 @@ namespace Lab_6
 
         private void whiteColorMenuItem_Click(object sender, EventArgs e)
         {
-            themeManager.ApplyLightTheme();
+            themeManager.SetStrategy(new LightTheme());
+            themeManager.ApplyTheme(this);
         }
 
         private void blackThemeMenuItem_Click(object sender, EventArgs e)
         {
-            themeManager.ApplyDarkTheme();
+            themeManager.SetStrategy(new DarkTheme());
+            themeManager.ApplyTheme(this);
         }
 
-        private void BackColorSelector_Click(object sender, EventArgs e)
+        private void CustomThemeMenuItem_Click(object sender, EventArgs e)
         {
-            using (ColorDialog colorDialog = new ColorDialog())
-            {
-                if (colorDialog.ShowDialog() == DialogResult.OK)
-                {
-                    themeManager.SetBackgroundColor(colorDialog.Color);
-                }
-            }
-        }
+            var backDialog = new ColorDialog();
+            var foreDialog = new ColorDialog();
 
-        private void BackColorPickerMenuItem_Click(object sender, EventArgs e)
-        {
-            using (ColorDialog colorDialog = new ColorDialog())
+            if (backDialog.ShowDialog() == DialogResult.OK && foreDialog.ShowDialog() == DialogResult.OK)
             {
-                if (colorDialog.ShowDialog() == DialogResult.OK)
-                {
-                    themeManager.SetForegroundColor(colorDialog.Color);
-                }
+                themeManager.SetStrategy(new CustomTheme(backDialog.Color, foreDialog.Color));
+                themeManager.ApplyTheme(this);
             }
         }
         private ContextMenuStrip CreateContextMenu()
