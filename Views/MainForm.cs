@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Lab_6
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IMarkdownSource
     {
+        private MarkdownPreviewForm previewForm;
         private DocumentManager documentManager;
         private FontManager fontManager;
         List<string> _FontsName = new List<string>();
@@ -32,6 +34,7 @@ namespace Lab_6
             resizeHandler = new WindowResizeHandler(this);
             RichTextBoxEditor.ContextMenuStrip = CreateContextMenu();
         }
+        public string GetMarkdownText() => RichTextBoxEditor.Text;
         private void CreateFileMenuButton_Click(object sender, EventArgs e)
         {
             documentManager.CreateNewDocument();
@@ -314,8 +317,14 @@ namespace Lab_6
 
         private void MarkdownPreviewButton_Click(object sender, EventArgs e)
         {
-            string markdownText = RichTextBoxEditor.Text;
-            var previewForm = new MarkdownPreviewForm(markdownText);
+            if (previewForm == null || previewForm.IsDisposed)
+            {
+                previewForm = new MarkdownPreviewForm();
+            }
+            var parser = new MarkdownParser();
+            var command = new MarkdownPreview(this, previewForm, parser);
+            command.Execute();
+
             previewForm.Show();
         }
     }

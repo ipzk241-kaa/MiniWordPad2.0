@@ -11,19 +11,20 @@ using System.Windows.Forms;
 
 namespace Lab_6
 {
-    public partial class MarkdownPreviewForm : Form
+    public partial class MarkdownPreviewForm : Form, IMarkdownTarget
     {
         private MarkdownRenderer _markdownRenderer;
         private WindowResizeHandler resizeHandler;
-        public MarkdownPreviewForm(string Text)
+        public WebBrowser PreviewBrowser => markdownPreviewBrowser;
+        public MarkdownPreviewForm()
         {
             InitializeComponent();
-            _markdownRenderer = new MarkdownRenderer(new MarkdownParser());
             resizeHandler = new WindowResizeHandler(this);
-            string markdownText = Text;
-            _markdownRenderer.Render(markdownText, markdownPreviewBrowser);
         }
-
+        public void ShowHtml(string html)
+        {
+            markdownPreviewBrowser.DocumentText = html;
+        }
         private void CloseWindowButton_Click(object sender, EventArgs e)
         {
             Close();

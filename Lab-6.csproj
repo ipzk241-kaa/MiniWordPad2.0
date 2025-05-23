@@ -62,6 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\Command\IMarkdown.cs" />
+    <Compile Include="Services\Command\MarkdownPreview.cs" />
     <Compile Include="Services\DocumentManager.cs" />
     <Compile Include="Services\FontManager.cs" />
     <Compile Include="Services\Strategy\CustomThemecs.cs" />
@@ -74,14 +76,14 @@
     <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\MarkdownParser.cs" />
+    <Compile Include="Services\Command\MarkdownParser.cs" />
     <Compile Include="Views\MarkdownPreviewForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\MarkdownPreviewForm.Designer.cs">
       <DependentUpon>MarkdownPreviewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\MarkdownRenderer.cs" />
+    <Compile Include="Services\Command\MarkdownRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\TextAlignmentManager.cs" />
@@ -117,8 +119,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Command\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
