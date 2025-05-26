@@ -31,7 +31,7 @@ namespace Lab_6
             fontManager = new FontManager(RichTextBoxEditor);
             textColorManager = new TextColorManager(RichTextBoxEditor);
             textAlignmentManager = new TextAlignmentManager(RichTextBoxEditor);
-            resizeHandler = new WindowResizeHandler(this);
+            resizeHandler = WindowResizeHandler.GetInstance(this);
             RichTextBoxEditor.ContextMenuStrip = CreateContextMenu();
         }
         public string GetMarkdownText() => RichTextBoxEditor.Text;
