@@ -19,7 +19,7 @@ namespace Lab_6
         public MarkdownPreviewForm()
         {
             InitializeComponent();
-            resizeHandler = new WindowResizeHandler(this);
+            resizeHandler = WindowResizeHandler.GetInstance(this);
         }
         public void ShowHtml(string html)
         {
