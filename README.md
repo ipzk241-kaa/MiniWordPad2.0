@@ -2,7 +2,8 @@
 
 Легка у використанні Windows Forms програма для редагування, перегляду та збереження Markdown, RTF та TXT документів.
 
-![image](https://github.com/user-attachments/assets/c67c0cab-e6f3-4457-88bc-3c4a6dceca02)
+![image](https://github.com/user-attachments/assets/e7528782-b6b5-4835-ab32-ad21f8f53ece)
+
 
 ---
 
