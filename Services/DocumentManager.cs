@@ -6,72 +6,64 @@ namespace Lab_6
 {
     public class DocumentManager
     {
-        public string OpenedDocumentPath { get; private set; } = string.Empty;
-        public bool IsOpened { get; private set; } = false;
-        public bool IsUnsaved { get; private set; } = false;
-        public string DefaultSaveDirectory { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        private const string OpenFileFilter = "Markdown Files (*.md)|*.md|Rich Text Format (*.rtf)|*.rtf|Text Files (*.txt)|*.txt|All files (*.*)|*.*";
+        private const string SaveFileFilter = "Markdown Files (*.md)|*.md|Rich Text Format (*.rtf)|*.rtf|Text Files (*.txt)|*.txt";
 
         private readonly RichTextBox _editor;
 
+        public string OpenedDocumentPath { get; private set; } = string.Empty;
+        public bool IsOpened => !string.IsNullOrEmpty(OpenedDocumentPath);
+        public bool IsUnsaved { get; private set; } = false;
+        public string DefaultSaveDirectory { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
         public DocumentManager(RichTextBox editor)
         {
-            _editor = editor;
+            _editor = editor ?? throw new ArgumentNullException(nameof(editor));
         }
 
         public void CreateNewDocument()
         {
             _editor.Clear();
             OpenedDocumentPath = string.Empty;
-            IsOpened = false;
             IsUnsaved = false;
         }
 
         public void OpenDocument()
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            using (OpenFileDialog dialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Markdown Files (*.md)|*.md|Rich Text Format (*.rtf)|*.rtf|Text Files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.Title = "Open File";
-                openFileDialog.InitialDirectory = DefaultSaveDirectory;
+                dialog.Filter = OpenFileFilter;
+                dialog.Title = "Open File";
+                dialog.InitialDirectory = DefaultSaveDirectory;
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    string ext = Path.GetExtension(openFileDialog.FileName).ToLower();
-                    if (ext == ".txt" || ext == ".md")
-                        _editor.Text = File.ReadAllText(openFileDialog.FileName);
-                    else
-                        _editor.LoadFile(openFileDialog.FileName);
-
-                    OpenedDocumentPath = openFileDialog.FileName;
-                    IsOpened = true;
-                    IsUnsaved = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error opening file: {ex.Message}");
+                    try
+                    {
+                        LoadFile(dialog.FileName);
+                        OpenedDocumentPath = dialog.FileName;
+                        IsUnsaved = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error opening file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-            };
         }
 
         public void SaveDocument()
         {
-            if (IsOpened && !string.IsNullOrEmpty(OpenedDocumentPath))
+            if (IsOpened)
             {
                 try
                 {
-                    string ext = Path.GetExtension(OpenedDocumentPath).ToLower();
-                    if (ext == ".txt" || ext == ".md")
-                        File.WriteAllText(OpenedDocumentPath, _editor.Text);
-                    else
-                        _editor.SaveFile(OpenedDocumentPath);
+                    SaveFile(OpenedDocumentPath);
                     IsUnsaved = false;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error saving file: {ex.Message}");
+                    MessageBox.Show($"Error saving file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -82,33 +74,57 @@ namespace Lab_6
 
         public void SaveDocumentAs()
         {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            using (SaveFileDialog dialog = new SaveFileDialog())
             {
-                saveFileDialog.Filter = "Markdown Files (*.md)|*.md|Rich Text Format (*.rtf)|*.rtf|Text Files (*.txt)|*.txt";
-                saveFileDialog.Title = "Save As";
-                saveFileDialog.InitialDirectory = DefaultSaveDirectory;
+                dialog.Filter = SaveFileFilter;
+                dialog.Title = "Save As";
+                dialog.InitialDirectory = DefaultSaveDirectory;
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        string ext = Path.GetExtension(saveFileDialog.FileName).ToLower();
-                        if (ext == ".txt" || ext == ".md")
-                            File.WriteAllText(saveFileDialog.FileName, _editor.Text);
-                        else
-                            _editor.SaveFile(saveFileDialog.FileName);
-                        OpenedDocumentPath = saveFileDialog.FileName;
-                        IsOpened = true;
+                        SaveFile(dialog.FileName);
+                        OpenedDocumentPath = dialog.FileName;
                         IsUnsaved = false;
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error saving file: {ex.Message}");
+                        MessageBox.Show($"Error saving file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            };
+            }
         }
 
-        public void MarkUnsaved() => IsUnsaved = true;
+        public void MarkUnsaved()
+        {
+            IsUnsaved = true;
+        }
+
+        private void LoadFile(string path)
+        {
+            string ext = Path.GetExtension(path).ToLowerInvariant();
+            if (ext == ".txt" || ext == ".md")
+            {
+                _editor.Text = File.ReadAllText(path);
+            }
+            else
+            {
+                _editor.LoadFile(path);
+            }
+        }
+
+        private void SaveFile(string path)
+        {
+            string ext = Path.GetExtension(path).ToLowerInvariant();
+            if (ext == ".txt" || ext == ".md")
+            {
+                File.WriteAllText(path, _editor.Text);
+            }
+            else
+            {
+                _editor.SaveFile(path);
+            }
+        }
     }
 }
